@@ -1,6 +1,6 @@
 # Sanity Clean Content Studio
 
-Congratulations, you have now installed the Sanity Content Studio, an open-source real-time content editing environment connected to the Sanity backend.
+Sanity Studio for my personal website at [estebanpayret.com](https://www.estebanpayret.com)
 
 Now you can do the following things:
 
