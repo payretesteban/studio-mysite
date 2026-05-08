@@ -31,5 +31,11 @@ export const postType = defineType({
       type: 'array',
       of: [{type: 'block'}],
     }),
+    defineField({
+      name: 'featured',
+      title: 'Featured Post',
+      type: 'boolean',
+      initialValue: false,
+    }),
   ],
 })

@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 
 export const linkType = defineType({
   name: 'link',
-  title: 'External Links',
+  title: 'Links',
   type: 'document',
   fields: [
     {
@@ -19,6 +19,7 @@ export const linkType = defineType({
       validation: (Rule) =>
         Rule.uri({
           scheme: ['http', 'https', 'mailto', 'tel'],
+          allowRelative: true,
         }),
     },
     {
@@ -30,6 +31,7 @@ export const linkType = defineType({
           {title: 'Social', value: 'social'},
           {title: 'Project', value: 'project'},
           {title: 'Professional', value: 'professional'},
+          {title: 'Internal', value: 'internal'},
         ],
         layout: 'radio',
       },
@@ -40,6 +42,17 @@ export const linkType = defineType({
       type: 'string',
       description: 'The string ID for your icon library (e.g., "github", "external-link", "mail")',
     },
+    {
+      name: 'class',
+      title: 'link class',
+      type: 'string',
+    },    
+    {
+      name: 'sort',
+      title: 'Sort order',
+      type: 'number',
+      initialValue: 0,
+    },  
   ],
   preview: {
     select: {
