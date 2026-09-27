@@ -5,5 +5,6 @@ import {settings} from './settings'
 import {serviceType} from './service'
 import {servicesPageType} from './servicesPage'
 import {siteLogEntryType} from './siteLogEntry'
+import {labItemType} from './labItem'
 
-export const schemaTypes = [postType, linkType, profile, settings, serviceType, servicesPageType, siteLogEntryType]
+export const schemaTypes = [postType, linkType, profile, settings, serviceType, servicesPageType, siteLogEntryType, labItemType]
