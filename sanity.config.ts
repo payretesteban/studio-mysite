@@ -4,7 +4,7 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 
 /** Document types that should only ever have one document. */
-const SINGLETONS = new Set(['servicesPage'])
+const SINGLETONS = new Set(['servicesPage', 'consultation'])
 
 export default defineConfig({
   name: 'default',
@@ -24,6 +24,11 @@ export default defineConfig({
               .title('Services page')
               .id('servicesPage')
               .child(S.document().schemaType('servicesPage').documentId('servicesPage')),
+            // "Free consultation" (homepage block + services page section) also opens its single document
+            S.listItem()
+              .title('Free consultation')
+              .id('consultation')
+              .child(S.document().schemaType('consultation').documentId('consultation')),
             S.divider(),
             ...S.documentTypeListItems().filter((item) => !SINGLETONS.has(item.getId() ?? '')),
           ]),
