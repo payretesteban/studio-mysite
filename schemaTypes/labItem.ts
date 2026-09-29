@@ -6,6 +6,7 @@ const LAB_PREVIEWS = [
   {title: 'Two languages side by side', value: 'readListen'},
   {title: 'Speed gauge', value: 'performance'},
   {title: 'Test results bar (shows the latest real numbers)', value: 'tests'},
+  {title: 'Mini estimate (size bar and weeks)', value: 'scope'},
   {title: 'Generic (flask)', value: 'generic'},
 ]
 
