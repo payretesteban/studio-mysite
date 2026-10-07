@@ -7,6 +7,7 @@ const LAB_PREVIEWS = [
   {title: 'Speed gauge', value: 'performance'},
   {title: 'Test results bar (shows the latest real numbers)', value: 'tests'},
   {title: 'Mini estimate (size bar and weeks)', value: 'scope'},
+  {title: 'Before/after AI bill', value: 'aiCost'},
   {title: 'Generic (flask)', value: 'generic'},
 ]
 
