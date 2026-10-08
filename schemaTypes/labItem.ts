@@ -8,6 +8,7 @@ const LAB_PREVIEWS = [
   {title: 'Test results bar (shows the latest real numbers)', value: 'tests'},
   {title: 'Mini estimate (size bar and weeks)', value: 'scope'},
   {title: 'Before/after AI bill', value: 'aiCost'},
+  {title: 'Website in a browser window (shows the link\'s address; good for other sites)', value: 'website'},
   {title: 'Generic (flask)', value: 'generic'},
 ]
 
@@ -25,14 +26,22 @@ export const labItemType = defineType({
     }),
     defineField({
       name: 'href',
-      title: 'Page address',
+      title: 'Address',
       type: 'string',
-      description: 'The page on this site, starting with "/", e.g. /read-listen.',
+      description:
+        'A page on this site starting with "/" (e.g. /read-listen), or a full link to another site starting with https:// (it opens in a new tab).',
       validation: (rule) =>
-        rule
-          .required()
-          .regex(/^\/[a-z0-9/-]*$/i, {name: 'internal address'})
-          .error('Use an address on this site that starts with "/", e.g. /read-listen.'),
+        rule.required().custom((value) => {
+          if (!value) return true
+          if (/^\/[a-z0-9/-]*$/i.test(value)) return true
+          try {
+            const url = new URL(value)
+            if (url.protocol === 'https:' && url.hostname.includes('.')) return true
+          } catch {
+            // not a full link; falls through to the message below
+          }
+          return 'Use a page on this site that starts with "/" (e.g. /read-listen) or a full https:// link to another site.'
+        }),
     }),
     defineField({
       name: 'blurb',
