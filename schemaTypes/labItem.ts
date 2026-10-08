@@ -82,6 +82,14 @@ export const labItemType = defineType({
       initialValue: 'generic',
     }),
     defineField({
+      name: 'image',
+      title: 'Card image',
+      type: 'image',
+      description:
+        'Optional. A screenshot shown at the top of the card instead of the card picture above, e.g. of a site built elsewhere. Wide images work best (about 5:2, e.g. 1200 × 480). Use the crop and focus point to choose which part shows.',
+      options: {hotspot: true},
+    }),
+    defineField({
       name: 'order',
       title: 'Order',
       type: 'number',
@@ -91,10 +99,11 @@ export const labItemType = defineType({
   ],
   orderings: [{title: 'Order', name: 'orderAsc', by: [{field: 'order', direction: 'asc'}]}],
   preview: {
-    select: {title: 'title', subtitle: 'href', status: 'status', order: 'order'},
-    prepare: ({title, subtitle, status, order}) => ({
+    select: {title: 'title', subtitle: 'href', status: 'status', order: 'order', media: 'image'},
+    prepare: ({title, subtitle, status, order, media}) => ({
       title: `${order != null ? `${order}. ` : ''}${title}${status === 'beta' ? ' (beta)' : ''}`,
       subtitle,
+      media,
     }),
   },
 })
